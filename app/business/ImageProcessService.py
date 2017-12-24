@@ -44,7 +44,7 @@ class Convert2PDF:
             for dirname in dirnames:
                 # 假设每个文件夹下都有图片，都是一本书
                 dirData ={"name":"","pages":[],"isBook":False}
-                dirName = dirname.split('/')[0]
+                dirName = dirname.split(os.path.sep)[0]
                 dirData['name'] = dirName
                 self.dirs[dirName] = dirData
 
@@ -53,7 +53,7 @@ class Convert2PDF:
 
                 real_filename = os.path.join(parent, filename)
                 # 取父文件夹名称为书名
-                parentDirName = real_filename.split('/')[-2]
+                parentDirName = real_filename.split(os.path.sep)[-2]
 
                 if parentDirName in self.dirs.keys():
                     dirJsonData = self.dirs[parentDirName]
